@@ -1,0 +1,29 @@
+<header class="flex justify-between items-center px-4 py-2 shadow-md bg-white">
+    <!-- Company Name -->
+    <div class="flex items-center space-x-4">
+      <span (click)="home()" class="text-lg font-bold text-gray-800">Jira Board System</span>
+      
+      <!-- Dropdowns visible when user is logged in -->
+      <ng-container *ngIf="isLoggedIn | async">
+        <mat-menu  #boardMenu="matMenu">
+          <button (click)="openBoard(board.id)" *ngFor="let board of boards" mat-menu-item>{{board.boardName}}</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="boardMenu" class="text-gray-700">
+          Boards <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+      </ng-container>
+    </div>
+  
+    <!-- Login/Profile Section -->
+    <div>
+      <ng-container *ngIf="isLoggedIn | async; else loginButton">
+        <button mat-icon-button aria-label="User Profile">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+      </ng-container>
+      <ng-template #loginButton>
+        <button mat-button class="text-blue-600" (click)="login()">Login</button>
+      </ng-template>
+    </div>
+  </header>
+  
