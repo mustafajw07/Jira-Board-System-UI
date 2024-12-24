@@ -8,9 +8,11 @@ import { BoardService } from 'src/app/boards/services/board.service';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit{
-  isLoggedIn = this.authService.isUserLogin;
-  boards:any = [];
-  constructor (private router: Router, private authService: AuthService , private boardService: BoardService) {}
+  protected isLoggedIn = this.authService.isUserLogin;
+  protected boards:any = [];
+  constructor (private router: Router,
+              private authService: AuthService,
+              private boardService: BoardService) {}
 
   ngOnInit(): void {
     if(this.authService.isAuthenticated()){

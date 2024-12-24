@@ -15,9 +15,10 @@ export class BoardsTableComponent {
   };
   @Input() displayedColumns?: string[];
 
-  searchTerm = '';
+  protected searchTerm = '';
+  protected dataSource = new MatTableDataSource();
+  
   private _allBoards:Board[] = []
-  dataSource = new MatTableDataSource();
 
   constructor (private router: Router) {}
 

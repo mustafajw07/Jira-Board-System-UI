@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { Board } from '../../models/Board';
 import { BoardService } from '../../services/board.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddBoardComponent } from '../../components/add-board/add-board.component';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 @Component({
   selector: 'app-all-boards',
   templateUrl: './all-boards.component.html'
 })
 export class AllBoardsComponent implements OnInit{
-  boards: Board[] = [];
-  displayedColumns: string[] = ['boardName', 'description'];
+  protected boards: Board[] = [];
+  protected displayedColumns: string[] = ['boardName', 'description'];
+  protected loading = false;
   
-  loading = false;
-  constructor (private router: Router , private boardService: BoardService, private dialog: MatDialog) {}
+  constructor (private boardService: BoardService,
+               private snackbarService: SnackbarService,
+               private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getAllBoards();
@@ -26,9 +27,8 @@ export class AllBoardsComponent implements OnInit{
     this.boardService.getAllBoards().subscribe({
       next: (result) => {
         this.boards = result;
-        this.loading = false;
       },
-      error(error) {console.log(error)},
+      error: (err) => {this.snackbarService.openErrorSnackbar(err.error , "X")},
       complete: () => {this.loading  = false}
     });
   }

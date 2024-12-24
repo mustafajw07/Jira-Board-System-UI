@@ -12,16 +12,16 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './add-board.component.html'
 })
 export class AddBoardComponent {
-  boardForm: FormGroup;
-  usersGroup: FormGroup;
-  users: ProfileData[] = [];
-  filteredUsers?: Observable<ProfileData[]>;
+  protected boardForm: FormGroup;
+  protected usersGroup: FormGroup;
+  protected users: ProfileData[] = [];
+  protected filteredUsers?: Observable<ProfileData[]>;
 
   constructor(private matDialogRef: MatDialogRef<AddBoardComponent>,
               private fb: FormBuilder,
+              private snackbarService: SnackbarService,
               private userService: UserService,
-              private boardService: BoardService,
-              private snackbarService: SnackbarService) {
+              private boardService: BoardService) {
     this.boardForm = this.fb.group({
       boardName: ['',[Validators.required]],
       description: ['' , [Validators.required]],
@@ -53,7 +53,7 @@ export class AddBoardComponent {
           )
         );
       },
-      error(err) {console.log(err);}
+      error: (err) => {this.snackbarService.openErrorSnackbar(err.error , "X")}
     });
   }
 

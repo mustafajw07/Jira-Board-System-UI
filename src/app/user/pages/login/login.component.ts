@@ -1,16 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth.service';
 import { Router } from '@angular/router';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html'
 })
-export class LoginComponent {
-  loginForm: FormGroup;
+export class LoginComponent implements OnInit{
+  public loginForm?: FormGroup;
 
-  constructor(private fb: FormBuilder , private authService: AuthService , private router: Router) {
+  constructor(private fb: FormBuilder,
+              private snackbarService: SnackbarService,
+              private authService: AuthService,
+              private router: Router) {}
+
+  ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
@@ -18,14 +24,15 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    if (this.loginForm.valid) {
+    if (this.loginForm?.valid) {
       this.authService.login(this.loginForm.value).subscribe({
         next : (value: any) => {
           this.authService.saveUserToken(value.message);
+          this.snackbarService.openSuccessSnackbar("Login Successful" , "X");
           this.router.navigate(['boards']);
         },
-        error(err) {
-          console.log({"Error" : err});
+        error: (err) => {
+          this.snackbarService.openErrorSnackbar(err.error , "X");
         }
       });
     }

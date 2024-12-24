@@ -7,7 +7,8 @@ import { Profile, ProfileDetails } from '../models/Profile';
   providedIn: 'root'
 })
 export class UserService {
-  API = "http://localhost:3000/api";
+  private API = "http://localhost:3000/api";
+
   constructor(private httpClient: HttpClient) { }
 
   getAllUsers(): Observable<Profile>{

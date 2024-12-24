@@ -7,7 +7,7 @@ import { Board } from '../models/Board';
   providedIn: 'root'
 })
 export class BoardService {
-  API = "http://localhost:3000/api";
+  private API = "http://localhost:3000/api";
 
   constructor(private httpClient: HttpClient) { }
 

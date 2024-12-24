@@ -4,6 +4,4 @@ import { Component } from '@angular/core';
   selector: 'app-loader',
   templateUrl: './loader.component.html'
 })
-export class LoaderComponent {
-
-}
+export class LoaderComponent {}
