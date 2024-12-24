@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
+
 import { User } from '../../models/ProjectBoard';
 
 @Component({
   selector: 'app-side-bar',
-  templateUrl: './side-bar.component.html'
+  templateUrl: './side-bar.component.html',
 })
 export class SideBarComponent {
   @Input() users?: User[];

@@ -24,12 +24,12 @@ export class ProjectBoardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(p => {
+    this.activatedRoute.params.subscribe((p) => {
       this.boardId = p['id'];
       this.getBoardById(this.boardId);
     });
   }
-  
+
   getBoardById(boardId: string) {
     this.loading = true;
     this.boardService.getBoardById(boardId).subscribe({
