@@ -10,12 +10,10 @@ const routes: Routes = [
     path: 'boards',
     loadChildren: () =>
       import('./boards/boards.module').then((m) => m.BoardsModule),
-    canActivate: [AuthGuard],
   },
   {
     path: 'user',
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
-    canActivate: [AuthGuard],
   },
   {
     path: '**',
