@@ -18,4 +18,8 @@ export class BoardService {
   getAllUserBoards():Observable<Board[]>{
     return this.httpClient.get<Board[]>(`${this.API}/user/boards`);
   }
+
+  addBoard(body: Board): Observable<string>{
+    return this.httpClient.post<string>(`${this.API}/board` , body);
+  }
 }

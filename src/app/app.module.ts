@@ -8,6 +8,7 @@ import { BoardsModule } from './boards/boards.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthenticationInterceptor } from './auth/authentication.interceptor';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AuthenticationInterceptor } from './auth/authentication.interceptor';
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
-    BoardsModule
+    BoardsModule,
+    UserModule
   ],
   providers: [
     {

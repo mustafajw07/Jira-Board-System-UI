@@ -1,6 +1,6 @@
 export interface Board{
     boardName: string,
-    id: string,
+    id?: string,
     user: string[]
     description: string
 }

@@ -17,7 +17,11 @@
     <!-- Login/Profile Section -->
     <div>
       <ng-container *ngIf="isLoggedIn | async; else loginButton">
-        <button mat-icon-button aria-label="User Profile">
+        <mat-menu  #profileMenu="matMenu">
+          <button (click)="openProfile()" mat-menu-item>Profile</button>
+          <button (click)="logout()" mat-menu-item>Logout</button>
+        </mat-menu>
+        <button [matMenuTriggerFor]="profileMenu" aria-label="User Profile">
           <mat-icon>account_circle</mat-icon>
         </button>
       </ng-container>

@@ -1,1 +1,37 @@
-<p>add-board works!</p>
+<div class="p-4 bg-white rounded-lg shadow-md w-96">
+    <h2 class="text-lg font-bold mb-4">Create Board</h2>
+    <form [formGroup]="boardForm" (ngSubmit)="onSubmit()">
+      <!-- Board Name -->
+      <mat-form-field class="w-full" appearance="outline">
+        <input matInput formControlName="boardName" placeholder="Enter board name" />
+      </mat-form-field>
+
+      <!-- Description -->
+      <mat-form-field class="w-full mt-4" appearance="outline">
+        <input matInput formControlName="description" placeholder="Enter description">
+      </mat-form-field>
+
+      <!-- Users -->
+      <mat-form-field class="w-full mt-4" appearance="outline">
+        <mat-select formControlName="users" [formGroup]="usersGroup" [disableOptionCentering]="true" multiple>
+          <mat-option>
+            <ngx-mat-select-search
+              formControlName="search"
+              placeholderLabel="Search users"
+              noEntriesFoundLabel="No users found"
+            ></ngx-mat-select-search>
+          </mat-option>
+          <mat-option *ngFor="let user of filteredUsers | async" [value]="user.id">
+            {{ user.userName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Buttons -->
+      <div class="flex justify-end gap-2 mt-6">
+        <button mat-button mat-dialog-close class="text-gray-700">Cancel</button>
+        <button mat-raised-button color="primary" [disabled]="boardForm.invalid">Create</button>
+      </div>
+    </form>
+  </div>
+  

@@ -25,9 +25,18 @@ export class HeaderComponent implements OnInit{
   login() {
     this.router.navigate(['login']);
   }
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['login']);
+  }
   
   home(){
     this.router.navigate(['boards']);
+  }
+
+  openProfile(){
+    this.router.navigate(['user']);
   }
 
   openBoard(boardId: string){
