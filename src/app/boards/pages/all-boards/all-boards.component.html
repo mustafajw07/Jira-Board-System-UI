@@ -1,9 +1,20 @@
 <app-loader *ngIf="loading"></app-loader>
 <div class="p-4">
   <h2>All board</h2>
-  <app-boards-table *ngIf="boards.length !== 0" [displayedColumns]="displayedColumns" [boards]="boards"></app-boards-table>
+  <app-boards-table
+    *ngIf="boards.length !== 0"
+    [displayedColumns]="displayedColumns"
+    [boards]="boards"
+  ></app-boards-table>
   <ng-container *ngIf="boards.length === 0">
     <div>No boards found</div>
   </ng-container>
-  <button (click)="openAddBoardDialog()" mat-raised-button color="primary" class="float-right mt-10 !text-white !bg-[#0052CC]">Add Board</button>
+  <button
+    (click)="openAddBoardDialog()"
+    mat-raised-button
+    color="primary"
+    class="float-right mt-10 !text-white !bg-[#0052CC]"
+  >
+    Add Board
+  </button>
 </div>
