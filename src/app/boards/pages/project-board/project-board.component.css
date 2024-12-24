@@ -1,0 +1,12 @@
+.mat-tab-label {
+    text-transform: none; /* To keep the tab labels consistent with the Jira style */
+  }
+  
+  button span {
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  button mat-icon {
+    font-size: 24px;
+  }
+  

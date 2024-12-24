@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 import { AuthService } from '../../../shared/services/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private titleService:Title,
     private snackbarService: SnackbarService,
     private authService: AuthService,
     private router: Router,
@@ -24,7 +26,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.titleService.setTitle("Login");
+  }
 
   onSubmit() {
     if (this.loginForm.valid) {

@@ -12,6 +12,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import {MatTabsModule} from '@angular/material/tabs';
 
 const MATERIAl = [
   MatButtonModule,
@@ -27,6 +28,7 @@ const MATERIAl = [
   NgxMatSelectSearchModule,
   MatChipsModule,
   MatCardModule,
+  MatTabsModule
 ];
 
 @NgModule({
