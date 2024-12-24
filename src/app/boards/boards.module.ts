@@ -6,19 +6,15 @@ import { AllBoardsComponent } from './pages/all-boards/all-boards.component';
 import { CommonModule } from '@angular/common';
 import { AddBoardComponent } from './components/add-board/add-board.component';
 import { BoardsTableComponent } from './components/boards-table/boards-table.component';
-
+import { ProjectBoardComponent } from './pages/project-board/project-board.component';
 
 @NgModule({
   declarations: [
     AllBoardsComponent,
     AddBoardComponent,
-    BoardsTableComponent
+    BoardsTableComponent,
+    ProjectBoardComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    BoardsRoutingModule
-  ]
+  imports: [CommonModule, SharedModule, BoardsRoutingModule],
 })
-
-export class BoardsModule { }
+export class BoardsModule {}
