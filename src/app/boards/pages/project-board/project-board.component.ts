@@ -24,21 +24,12 @@ export class ProjectBoardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.boardId = this.activatedRoute.snapshot.params['id'];
-    this.getBoardById(this.boardId);
+    this.activatedRoute.params.subscribe(p => {
+      this.boardId = p['id'];
+      this.getBoardById(this.boardId);
+    });
   }
-
-  isSidebarOpen = false; // Sidebar state
-  selectedTabIndex = 0; // Default tab
-
-  toggleSidebar() {
-    this.isSidebarOpen = !this.isSidebarOpen;
-  }
-
-  selectTab(index: number) {
-    this.selectedTabIndex = index;
-  }
-
+  
   getBoardById(boardId: string) {
     this.loading = true;
     this.boardService.getBoardById(boardId).subscribe({

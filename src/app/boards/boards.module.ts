@@ -8,6 +8,8 @@ import { AddBoardComponent } from './components/add-board/add-board.component';
 import { BoardsTableComponent } from './components/boards-table/boards-table.component';
 import { AllBoardsComponent } from './pages/all-boards/all-boards.component';
 import { ProjectBoardComponent } from './pages/project-board/project-board.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { UserSelectorComponent } from './components/user-selector/user-selector.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { ProjectBoardComponent } from './pages/project-board/project-board.compo
     AddBoardComponent,
     BoardsTableComponent,
     ProjectBoardComponent,
+    SideBarComponent,
+    UserSelectorComponent,
   ],
   imports: [CommonModule, SharedModule, BoardsRoutingModule],
 })

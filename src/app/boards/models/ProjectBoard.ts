@@ -5,7 +5,7 @@ export interface ProjectBoard {
   users: User[];
 }
 
-interface User {
+export interface User {
   id: string;
   email: string;
   userName: string;
