@@ -1,17 +1,17 @@
 <app-loader *ngIf="loading"></app-loader>
 <div class="mt-12 p-6 max-w-4xl mx-auto bg-white rounded-xl shadow-md space-y-4">
     <div class="border border-gray-200 rounded-md p-4">
-      <h2 class="text-2xl font-bold mb-4">User Profile</h2>
+      <h2 class="text-2xl font-bold mb-4">Details</h2>
   
       <!-- User Information -->
       <div class="mb-4">
-        <p><span class="font-semibold">User Name:</span> {{ userDetails.userName }}</p>
-        <p><span class="font-semibold">Email:</span> {{ userDetails.email }}</p>
+        <p><span>User Name:</span> {{ userDetails.userName }}</p>
+        <p><span>Email:</span> {{ userDetails.email }}</p>
       </div>
   
       <!-- User Roles -->
       <div class="mb-4">
-        <p class="font-semibold">Roles:</p>
+        <p>Roles:</p>
         <div class="flex flex-wrap gap-2">
           <div
             class="px-3 py-1 text-sm font-medium text-white bg-blue-500 rounded-full">

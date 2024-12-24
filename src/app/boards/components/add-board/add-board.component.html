@@ -4,11 +4,17 @@
       <!-- Board Name -->
       <mat-form-field class="w-full" appearance="outline">
         <input matInput formControlName="boardName" placeholder="Enter board name" />
+        <mat-error *ngIf="boardForm.get('boardName')?.hasError('required')">
+          Board Name is required
+        </mat-error>
       </mat-form-field>
 
       <!-- Description -->
       <mat-form-field class="w-full mt-4" appearance="outline">
         <input matInput formControlName="description" placeholder="Enter description">
+        <mat-error *ngIf="boardForm.get('description')?.hasError('required')">
+          Description is required
+        </mat-error>
       </mat-form-field>
 
       <!-- Users -->

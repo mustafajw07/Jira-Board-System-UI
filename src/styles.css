@@ -8,24 +8,24 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 .green-snackbar{
-    background-color: #00853f;
-    color: #fff;
+    background-color: #00853f !important;
+    color: #fff !important;
 }
 
 .green-snackbar button{
-    background-color: #00853f;
-    color: #fff !important;;
+    background-color: #00853f !important;
+    color: #fff !important;
     border: none;
 }
 
 
 .red-snackbar{
-    background-color: #9e1b32;
-    color: #fff;
+    background-color: #9e1b32 !important;
+    color: #fff !important;
 }
 
 .re-snackbar button{
-    background-color: #9e1b32;
+    background-color: #9e1b32 !important;
     color: #fff !important;
     border: none;
 }

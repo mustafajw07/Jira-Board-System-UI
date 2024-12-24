@@ -9,22 +9,22 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service';
   templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit{
-  public loginForm?: FormGroup;
+  public loginForm: FormGroup;
 
   constructor(private fb: FormBuilder,
               private snackbarService: SnackbarService,
               private authService: AuthService,
-              private router: Router) {}
+              private router: Router) {
+                this.loginForm = this.fb.group({
+                  email: ['', [Validators.required, Validators.email]],
+                  password: ['', [Validators.required]],
+                });
+              }
 
-  ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-    });
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
-    if (this.loginForm?.valid) {
+    if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
         next : (value: any) => {
           this.authService.saveUserToken(value.message);
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit{
           this.router.navigate(['boards']);
         },
         error: (err) => {
-          this.snackbarService.openErrorSnackbar(err.error , "X");
+          this.snackbarService.openErrorSnackbar(err.error.message , "X");
         }
       });
     }
