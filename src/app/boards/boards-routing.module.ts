@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AllBoardsComponent } from './pages/all-boards/all-boards.component';
+
 import { AuthGuard } from '../auth/auth.guard';
+
 import { ProjectBoardComponent } from './pages/project-board/project-board.component';
 
 const routes: Routes = [

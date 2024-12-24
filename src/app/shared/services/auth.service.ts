@@ -1,23 +1,24 @@
-import { Injectable } from '@angular/core';
-import { User } from '../models/User';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+import { User } from '../models/User';
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  private API = "http://localhost:3000/api";
+  private API = 'http://localhost:3000/api';
   public isUserLogin = new BehaviorSubject(false);
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
-  login(user: User){
+  login(user: User) {
     return this.httpClient.post(`${this.API}/login`, user);
   }
 
-  getToken(): string{
-    return localStorage.getItem("token") || "";
+  getToken(): string {
+    return localStorage.getItem('token') || '';
   }
 
   isAuthenticated(): boolean {
@@ -25,12 +26,12 @@ export class AuthService {
     return !!token; // Return true if token exists, false otherwise
   }
 
-  saveUserToken(token: string){
-    localStorage.setItem("token" , token);
+  saveUserToken(token: string) {
+    localStorage.setItem('token', token);
     this.isUserLogin.next(true);
   }
 
-  logout(){
-    localStorage.removeItem("token")
+  logout() {
+    localStorage.removeItem('token');
   }
 }
