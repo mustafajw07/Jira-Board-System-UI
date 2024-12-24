@@ -1,51 +1,51 @@
 <!-- Search Bar -->
 <div class="mb-4">
-    <mat-form-field appearance="outline" class="w-96">
-      <input matInput [(ngModel)]="searchTerm" placeholder="Search" />
-    </mat-form-field>
-  </div>
+  <mat-form-field appearance="outline" class="w-96">
+    <input matInput [(ngModel)]="searchTerm" placeholder="Search" />
+  </mat-form-field>
+</div>
 
-  <!-- Table -->
-  <div class="overflow-auto">
-    <table
-      *ngIf="filteredBoards.length !== 0"
-      mat-table
-      [dataSource]="filteredBoards"
-      matSort
-      class="w-full mat-elevation-z8"
-    >
-      <!-- Board Name Column -->
-      <ng-container matColumnDef="boardName">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          mat-sort-header
-          class="text-left px-4 py-2"
-        >
-          Board Name
-        </th>
-        <td
-          mat-cell
-          *matCellDef="let element"
-          class="border px-4 py-2 text-[#0052CC] cursor-pointer"
-          (click)="openBoard(element.id)"
-        >
-          {{ element.boardName }}
-        </td>
-      </ng-container>
+<!-- Table -->
+<div class="overflow-auto">
+  <table
+    *ngIf="filteredBoards.length !== 0"
+    mat-table
+    [dataSource]="filteredBoards"
+    matSort
+    class="w-full mat-elevation-z8"
+  >
+    <!-- Board Name Column -->
+    <ng-container matColumnDef="boardName">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        class="text-left px-4 py-2"
+      >
+        Board Name
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        class="border px-4 py-2 text-[#0052CC] cursor-pointer"
+        (click)="openBoard(element.id)"
+      >
+        {{ element.boardName }}
+      </td>
+    </ng-container>
 
-      <!-- Description Column -->
-      <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef class="text-left px-4 py-2">
-          Description
-        </th>
-        <td mat-cell *matCellDef="let element" class="border px-4 py-2">
-          {{ element.description }}
-        </td>
-      </ng-container>
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef class="text-left px-4 py-2">
+        Description
+      </th>
+      <td mat-cell *matCellDef="let element" class="border px-4 py-2">
+        {{ element.description }}
+      </td>
+    </ng-container>
 
-      <!-- Header and Row Definitions -->
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-  </div>
+    <!-- Header and Row Definitions -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
