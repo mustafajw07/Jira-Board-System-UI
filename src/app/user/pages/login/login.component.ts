@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 import { AuthService } from '../../../shared/services/auth.service';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',

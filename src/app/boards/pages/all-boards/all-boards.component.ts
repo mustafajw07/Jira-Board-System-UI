@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Title } from '@angular/platform-browser';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 import { AddBoardComponent } from '../../components/add-board/add-board.component';
 import { Board } from '../../models/Board';
 import { BoardService } from '../../services/board.service';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-all-boards',
@@ -44,7 +44,7 @@ export class AllBoardsComponent implements OnInit {
   }
 
   openAddBoardDialog() {
-    let dialog = this.dialog.open(AddBoardComponent);
+    const dialog = this.dialog.open(AddBoardComponent);
     dialog.afterClosed().subscribe(() => {
       this.getAllBoards();
     });

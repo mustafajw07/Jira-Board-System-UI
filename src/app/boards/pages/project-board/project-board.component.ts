@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { BoardService } from '../../services/board.service';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
+
 import { ProjectBoard } from '../../models/ProjectBoard';
+import { BoardService } from '../../services/board.service';
 
 @Component({
   selector: 'app-project-board',

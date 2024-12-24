@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Board } from 'src/app/boards/models/Board';
 import { BoardService } from 'src/app/boards/services/board.service';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 import { ProfileData } from '../../models/Profile';
 import { UserService } from '../../services/user.service';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
