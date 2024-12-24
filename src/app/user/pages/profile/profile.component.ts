@@ -5,6 +5,7 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 import { ProfileData } from '../../models/Profile';
 import { UserService } from '../../services/user.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -20,12 +21,14 @@ export class ProfileComponent implements OnInit {
   };
   protected boards: Board[] = [];
   constructor(
+    private titleService:Title,
     private userService: UserService,
     private snackbarService: SnackbarService,
     private boardService: BoardService,
   ) {}
 
   ngOnInit(): void {
+    this.titleService.setTitle("Profile");
     this.getUserDetails();
   }
 

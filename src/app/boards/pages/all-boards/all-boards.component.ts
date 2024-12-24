@@ -5,6 +5,7 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 import { AddBoardComponent } from '../../components/add-board/add-board.component';
 import { Board } from '../../models/Board';
 import { BoardService } from '../../services/board.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-all-boards',
@@ -16,12 +17,14 @@ export class AllBoardsComponent implements OnInit {
   protected loading = false;
 
   constructor(
+    private titleService:Title,
     private boardService: BoardService,
     private snackbarService: SnackbarService,
     private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
+    this.titleService.setTitle("Boards");
     this.getAllBoards();
   }
 
