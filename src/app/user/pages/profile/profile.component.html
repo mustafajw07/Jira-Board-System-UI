@@ -21,12 +21,15 @@
       </div>
   
       <!-- User Boards -->
-      <!-- <div>
+      <div>
         <p class="font-semibold">Boards:</p>
-        <ul class="list-disc pl-5">
-          <li *ngFor="let board of user.boards">{{ board }}</li>
+        <ul *ngIf="boards.length > 0" class="list-disc pl-5">
+          <li *ngFor="let board of boards">{{ board.boardName }}</li>
         </ul>
-      </div> -->
+        <ng-container *ngIf="boards.length === 0">
+          <p>No Boards found</p>
+        </ng-container>
+      </div>
     </div>
   </div>
   
