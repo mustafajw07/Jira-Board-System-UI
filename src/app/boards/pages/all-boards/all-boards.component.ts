@@ -17,14 +17,14 @@ export class AllBoardsComponent implements OnInit {
   protected loading = false;
 
   constructor(
-    private titleService:Title,
+    private titleService: Title,
     private boardService: BoardService,
     private snackbarService: SnackbarService,
     private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
-    this.titleService.setTitle("Boards");
+    this.titleService.setTitle('Boards');
     this.getAllBoards();
   }
 

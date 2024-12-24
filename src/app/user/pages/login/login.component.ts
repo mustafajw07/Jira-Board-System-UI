@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private titleService:Title,
+    private titleService: Title,
     private snackbarService: SnackbarService,
     private authService: AuthService,
     private router: Router,
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.titleService.setTitle("Login");
+    this.titleService.setTitle('Login');
   }
 
   onSubmit() {

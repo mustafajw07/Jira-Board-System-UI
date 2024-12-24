@@ -5,27 +5,26 @@ import { Board } from '../models/Board';
 import { ProjectBoard } from '../models/ProjectBoard';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BoardService {
-  private API = "http://localhost:3000/api";
+  private API = 'http://localhost:3000/api';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
-  getAllBoards():Observable<Board[]>{
+  getAllBoards(): Observable<Board[]> {
     return this.httpClient.get<Board[]>(`${this.API}/boards`);
   }
 
-  getAllUserBoards():Observable<Board[]>{
+  getAllUserBoards(): Observable<Board[]> {
     return this.httpClient.get<Board[]>(`${this.API}/user/boards`);
   }
 
-  addBoard(body: Board): Observable<string>{
-    return this.httpClient.post<string>(`${this.API}/board` , body);
+  addBoard(body: Board): Observable<string> {
+    return this.httpClient.post<string>(`${this.API}/board`, body);
   }
 
-  getBoardById(boardId: string): Observable<ProjectBoard>{
+  getBoardById(boardId: string): Observable<ProjectBoard> {
     return this.httpClient.get<ProjectBoard>(`${this.API}/board/${boardId}`);
   }
-
 }

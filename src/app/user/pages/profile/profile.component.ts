@@ -21,14 +21,14 @@ export class ProfileComponent implements OnInit {
   };
   protected boards: Board[] = [];
   constructor(
-    private titleService:Title,
+    private titleService: Title,
     private userService: UserService,
     private snackbarService: SnackbarService,
     private boardService: BoardService,
   ) {}
 
   ngOnInit(): void {
-    this.titleService.setTitle("Profile");
+    this.titleService.setTitle('Profile');
     this.getUserDetails();
   }
 
