@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { User } from '../../models/ProjectBoard';
 
@@ -12,8 +12,17 @@ export class UserSelectorComponent implements OnInit {
     this._allUsers = data;
   }
   protected _allUsers: User[] = [];
+  protected selectedFilter: number | null = null;
 
-  ngOnInit(): void {
-    console.log(this._allUsers);
+  @Output() selectedUser = new EventEmitter<string>();
+
+  ngOnInit(): void {}
+  
+  toggleFilter(index: number): void {
+    this.selectedFilter = this.selectedFilter === index ? null : index;
+    if(this.selectedFilter !== null){
+      let selectedUser = this._allUsers[this.selectedFilter];
+      this.selectedUser.emit(selectedUser.id);
+    }
   }
 }

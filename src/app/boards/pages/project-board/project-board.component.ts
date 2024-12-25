@@ -14,13 +14,19 @@ import { BoardService } from '../../services/board.service';
 export class ProjectBoardComponent implements OnInit {
   protected boardId: string = '';
   protected loading: boolean = false;
-  protected projectBoard!: ProjectBoard;
+  protected userId: string = '';
+  protected projectBoard: ProjectBoard = {
+    boardName: '',
+    id: '',
+    description: '',
+    users : []
+  };
 
   constructor(
     private titleService: Title,
     private activatedRoute: ActivatedRoute,
     private snackbarService: SnackbarService,
-    private boardService: BoardService,
+    private boardService: BoardService
   ) {}
 
   ngOnInit(): void {
@@ -31,7 +37,6 @@ export class ProjectBoardComponent implements OnInit {
   }
 
   getBoardById(boardId: string) {
-    this.loading = true;
     this.boardService.getBoardById(boardId).subscribe({
       next: (res) => {
         this.projectBoard = res;
@@ -44,5 +49,9 @@ export class ProjectBoardComponent implements OnInit {
         this.loading = false;
       },
     });
+  }
+
+  updateSelectedUser(e: string){
+    this.userId = e;
   }
 }

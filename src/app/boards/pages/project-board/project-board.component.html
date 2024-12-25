@@ -1,3 +1,15 @@
 <app-loader *ngIf="loading"></app-loader>
 <app-side-bar></app-side-bar>
-<!-- <app-user-selector [users]="projectBoard.users"></app-user-selector> -->
+<div class="ml-24 mt-10">
+  <div>
+    <h2>{{ projectBoard.boardName }}</h2>
+  </div>
+  <div>
+    <app-user-selector
+      *ngIf="projectBoard.users.length > 0"
+      [users]="projectBoard.users"
+      (selectedUser)="updateSelectedUser($event)"
+    ></app-user-selector>
+  </div>
+</div>
+<app-story-board [userId]="userId"></app-story-board>

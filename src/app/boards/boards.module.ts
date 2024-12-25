@@ -10,6 +10,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { UserSelectorComponent } from './components/user-selector/user-selector.component';
 import { AllBoardsComponent } from './pages/all-boards/all-boards.component';
 import { ProjectBoardComponent } from './pages/project-board/project-board.component';
+import { StoryBoardComponent } from './components/story-board/story-board.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ProjectBoardComponent } from './pages/project-board/project-board.compo
     ProjectBoardComponent,
     SideBarComponent,
     UserSelectorComponent,
+    StoryBoardComponent,
   ],
   imports: [CommonModule, SharedModule, BoardsRoutingModule],
 })

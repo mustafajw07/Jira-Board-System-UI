@@ -13,6 +13,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 const MATERIAl = [
   MatButtonModule,
@@ -29,6 +30,7 @@ const MATERIAl = [
   MatChipsModule,
   MatCardModule,
   MatTabsModule,
+  DragDropModule
 ];
 
 @NgModule({

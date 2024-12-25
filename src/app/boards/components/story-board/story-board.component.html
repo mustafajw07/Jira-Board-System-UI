@@ -1,0 +1,21 @@
+<div class="flex gap-4 p-4">
+  <div
+    *ngFor="let column of boardColumns"
+    cdkDropList
+    [cdkDropListData]="column.stories"
+    [cdkDropListConnectedTo]="connectedLists"
+    class="w-1/4 bg-gray-100 rounded p-4 shadow-md"
+    (cdkDropListDropped)="onDrop($event)"
+  >
+    <h2 class="text-lg font-semibold mb-4">{{ column.title }}</h2>
+    <div
+      *ngFor="let task of column.stories"
+      cdkDrag
+      [ngClass]="{ 'line-through text-gray-500': column.title === 'Done' }"
+      class="bg-white rounded p-2 shadow-sm mb-2 cursor-pointer"
+    >
+      {{ task }}
+    </div>
+  </div>
+</div>
+
