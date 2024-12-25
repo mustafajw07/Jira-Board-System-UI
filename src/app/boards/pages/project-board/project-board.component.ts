@@ -19,14 +19,14 @@ export class ProjectBoardComponent implements OnInit {
     boardName: '',
     id: '',
     description: '',
-    users : []
+    users: [],
   };
 
   constructor(
     private titleService: Title,
     private activatedRoute: ActivatedRoute,
     private snackbarService: SnackbarService,
-    private boardService: BoardService
+    private boardService: BoardService,
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +51,7 @@ export class ProjectBoardComponent implements OnInit {
     });
   }
 
-  updateSelectedUser(e: string){
+  updateSelectedUser(e: string) {
     this.userId = e;
   }
 }

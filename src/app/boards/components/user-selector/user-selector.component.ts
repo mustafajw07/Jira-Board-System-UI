@@ -17,11 +17,11 @@ export class UserSelectorComponent implements OnInit {
   @Output() selectedUser = new EventEmitter<string>();
 
   ngOnInit(): void {}
-  
+
   toggleFilter(index: number): void {
     this.selectedFilter = this.selectedFilter === index ? null : index;
-    if(this.selectedFilter !== null){
-      let selectedUser = this._allUsers[this.selectedFilter];
+    if (this.selectedFilter !== null) {
+      const selectedUser = this._allUsers[this.selectedFilter];
       this.selectedUser.emit(selectedUser.id);
     }
   }

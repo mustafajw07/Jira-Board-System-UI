@@ -1,17 +1,15 @@
-import {
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
+import { moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
-import { StoryService } from '../../services/story.service';
 import { ActivatedRoute } from '@angular/router';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
+
+import { Sprint } from '../../models/Sprint';
 import { Story } from '../../models/Story';
 import { SprintService } from '../../services/sprint.service';
-import { Sprint } from '../../models/Sprint';
+import { StoryService } from '../../services/story.service';
 
-interface BoardColums{
-  title: string,
+interface BoardColums {
+  title: string;
   stories: Story[];
 }
 
@@ -21,7 +19,7 @@ interface BoardColums{
   styleUrls: ['./story-board.component.css'],
 })
 export class StoryBoardComponent implements OnInit {
-  @Input() set userId(id: string){
+  @Input() set userId(id: string) {
     this._userId = id;
   }
   protected stories!: Story[];
@@ -30,7 +28,7 @@ export class StoryBoardComponent implements OnInit {
   protected boardSprints!: Sprint[];
   protected activeSprintStories!: Story[];
   private _userId!: string;
-  protected boardColumns:any = [
+  protected boardColumns: any = [
     {
       title: 'To Do',
       stories: [],
@@ -67,21 +65,33 @@ export class StoryBoardComponent implements OnInit {
     this.storyService.getStoriesOnBoard(boardId).subscribe({
       next: (res) => {
         this.stories = res.stories;
-        this.activeSprintStories = this.stories.filter((i) => this.activeSprint.id === i.sprintId);
+        this.activeSprintStories = this.stories.filter(
+          (i) => this.activeSprint.id === i.sprintId,
+        );
         this.activeSprintStories.forEach((e) => {
-          this.boardColumns.forEach((i:any) => {
-            if(e.status.status.toLocaleLowerCase() === "todo" && i.title === "To Do"){
+          this.boardColumns.forEach((i: any) => {
+            if (
+              e.status.status.toLocaleLowerCase() === 'todo' &&
+              i.title === 'To Do'
+            ) {
               i.stories.push(e);
-            }else if(e.status.status.toLocaleLowerCase() === "inprogress" && i.title === "In Progress"){
+            } else if (
+              e.status.status.toLocaleLowerCase() === 'inprogress' &&
+              i.title === 'In Progress'
+            ) {
+              i.stories.push(e);
+            } else if (
+              e.status.status.toLocaleLowerCase() === 'validation' &&
+              i.title === 'Validation'
+            ) {
+              i.stories.push(e);
+            } else if (
+              e.status.status.toLocaleLowerCase() === 'done' &&
+              i.title === 'Done'
+            ) {
               i.stories.push(e);
             }
-            else if(e.status.status.toLocaleLowerCase() === "validation" && i.title === "Validation"){
-              i.stories.push(e);
-            }
-            else if(e.status.status.toLocaleLowerCase() === "done" && i.title === "Done"){
-              i.stories.push(e);
-            }
-          })
+          });
         });
       },
       error: (err) => {
@@ -105,12 +115,13 @@ export class StoryBoardComponent implements OnInit {
 
   filterByEndDate = (dataArray: Sprint[]) => {
     const currentDate = new Date();
-    return dataArray.filter(item => new Date(item.endDate) > currentDate)[0];
+    return dataArray.filter((item) => new Date(item.endDate) > currentDate)[0];
   };
 
-
   get connectedLists() {
-    return this.boardColumns.map((_: any, index:any) => `cdk-drop-list-${index}`);
+    return this.boardColumns.map(
+      (_: any, index: any) => `cdk-drop-list-${index}`,
+    );
   }
 
   onDrop(event: any) {
