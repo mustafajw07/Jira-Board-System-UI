@@ -23,8 +23,8 @@ export class UserSelectorComponent implements OnInit {
     if (this.selectedFilter !== null) {
       const selectedUser = this._allUsers[this.selectedFilter];
       this.selectedUser.emit(selectedUser.id);
-    }else{
-      this.selectedUser.emit("");
+    } else {
+      this.selectedUser.emit('');
     }
   }
 }

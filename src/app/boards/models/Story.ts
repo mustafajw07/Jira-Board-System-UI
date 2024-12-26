@@ -1,4 +1,4 @@
-import { User } from "./ProjectBoard";
+import { User } from './ProjectBoard';
 
 export interface Stories {
   stories: Story[];

@@ -20,11 +20,11 @@ interface BoardColums {
 })
 export class StoryBoardComponent implements OnInit {
   @Input() set userId(id: string) {
-    if(id){
+    if (id) {
       this._userId = id;
       this.sortStoryOnBoard(this.userSprintStories);
-    }else{
-      this._userId = "";
+    } else {
+      this._userId = '';
       this.sortStoryOnBoard(this.activeSprintStories);
     }
   }
@@ -68,7 +68,7 @@ export class StoryBoardComponent implements OnInit {
     });
   }
 
-  sortStoryOnBoard(stories: Story[]){
+  sortStoryOnBoard(stories: Story[]) {
     stories.forEach((e) => {
       this.boardColumns.forEach((i: any) => {
         if (
