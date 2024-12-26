@@ -30,6 +30,7 @@ export class StoryBoardComponent implements OnInit {
   protected activeSprintStories: Story[] = [];
   protected userSprintStories: Story[] = [];
   private _userId!: string;
+  protected loading = false;
   protected boardColumns: any = [
     {
       title: 'To Do',
@@ -102,24 +103,26 @@ export class StoryBoardComponent implements OnInit {
           (i) => this._userId === i.reporter.id,
         );
         this.sortStoryOnBoard(this.activeSprintStories);
-        console.log(this.boardColumns);
+        this.loading = false;
       },
       error: (err) => {
         this.snackbarService.openErrorSnackbar(err.error, 'X');
       },
+      complete: () => {this.loading = false}
     });
   }
 
   getSprintById(boardId: string) {
+    this.loading = true;
     this.sprintService.getSprintbyBoardId(boardId).subscribe({
       next: (res) => {
         this.boardSprints = res.sprint;
         this.activeSprint = this.filterByEndDate(this.boardSprints);
-        this.getStoryOnBoard(this.boardId);
       },
       error: (err) => {
         this.snackbarService.openErrorSnackbar(err.error, 'X');
       },
+      complete: () =>{this.getStoryOnBoard(this.boardId);}
     });
   }
 

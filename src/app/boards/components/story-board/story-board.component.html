@@ -1,3 +1,4 @@
+<app-loader *ngIf="loading"></app-loader>
 <div class="flex gap-4 p-4">
   <div
     *ngFor="let column of boardColumns"
@@ -14,7 +15,7 @@
       [ngClass]="{ 'line-through text-gray-500': column.title === 'Done' }"
       class="bg-white rounded p-2 shadow-sm mb-2 cursor-pointer"
     >
-      {{ task }}
+      {{ task.title }}
     </div>
   </div>
 </div>
