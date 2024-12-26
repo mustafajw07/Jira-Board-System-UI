@@ -1,4 +1,5 @@
 import { User } from './ProjectBoard';
+import { Sprint } from './Sprint';
 
 export interface Stories {
   stories: Story[];
@@ -13,8 +14,8 @@ export interface Story {
   boardId: string;
   reporter: User;
   teamMember: string;
-  assigned: string;
-  sprintId: string;
+  assigned: User;
+  sprint: Sprint;
   epic: string;
   priority: Priority;
   type: Type;
@@ -32,6 +33,6 @@ interface Type {
 }
 
 interface Status {
-  status: string;
+  name: string;
   id: string;
 }

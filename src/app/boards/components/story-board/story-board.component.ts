@@ -8,11 +8,6 @@ import { Story } from '../../models/Story';
 import { SprintService } from '../../services/sprint.service';
 import { StoryService } from '../../services/story.service';
 
-interface BoardColums {
-  title: string;
-  stories: Story[];
-}
-
 @Component({
   selector: 'app-story-board',
   templateUrl: './story-board.component.html',
@@ -28,12 +23,12 @@ export class StoryBoardComponent implements OnInit {
       this.sortStoryOnBoard(this.activeSprintStories);
     }
   }
-  protected stories!: Story[];
   private boardId!: string;
+  protected stories: Story[] = [];
+  protected boardSprints: Sprint[] = [];
   protected activeSprint!: Sprint;
-  protected boardSprints!: Sprint[];
-  protected activeSprintStories!: Story[];
-  protected userSprintStories!: Story[];
+  protected activeSprintStories: Story[] = [];
+  protected userSprintStories: Story[] = [];
   private _userId!: string;
   protected boardColumns: any = [
     {
@@ -72,22 +67,22 @@ export class StoryBoardComponent implements OnInit {
     stories.forEach((e) => {
       this.boardColumns.forEach((i: any) => {
         if (
-          e.status.status.toLocaleLowerCase() === 'todo' &&
+          e.status.name.toLocaleLowerCase() === 'todo' &&
           i.title === 'To Do'
         ) {
           i.stories.push(e);
         } else if (
-          e.status.status.toLocaleLowerCase() === 'inprogress' &&
+          e.status.name.toLocaleLowerCase() === 'inprogress' &&
           i.title === 'In Progress'
         ) {
           i.stories.push(e);
         } else if (
-          e.status.status.toLocaleLowerCase() === 'validation' &&
+          e.status.name.toLocaleLowerCase() === 'validation' &&
           i.title === 'Validation'
         ) {
           i.stories.push(e);
         } else if (
-          e.status.status.toLocaleLowerCase() === 'done' &&
+          e.status.name.toLocaleLowerCase() === 'done' &&
           i.title === 'Done'
         ) {
           i.stories.push(e);
@@ -101,12 +96,14 @@ export class StoryBoardComponent implements OnInit {
       next: (res) => {
         this.stories = res.stories;
         this.activeSprintStories = this.stories.filter(
-          (i) => this.activeSprint.id === i.sprintId,
+          (i) => this.activeSprint.id === i.sprint.id,
         );
         this.userSprintStories = this.stories.filter(
           (i) => this._userId === i.reporter.id,
         );
         this.sortStoryOnBoard(this.activeSprintStories);
+        console.log(this.boardColumns);
+        
       },
       error: (err) => {
         this.snackbarService.openErrorSnackbar(err.error, 'X');
