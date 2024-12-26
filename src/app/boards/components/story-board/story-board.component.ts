@@ -103,7 +103,6 @@ export class StoryBoardComponent implements OnInit {
         );
         this.sortStoryOnBoard(this.activeSprintStories);
         console.log(this.boardColumns);
-        
       },
       error: (err) => {
         this.snackbarService.openErrorSnackbar(err.error, 'X');
