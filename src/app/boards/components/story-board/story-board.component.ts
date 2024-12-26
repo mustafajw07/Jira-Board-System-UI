@@ -20,13 +20,20 @@ interface BoardColums {
 })
 export class StoryBoardComponent implements OnInit {
   @Input() set userId(id: string) {
-    this._userId = id;
+    if(id){
+      this._userId = id;
+      this.sortStoryOnBoard(this.userSprintStories);
+    }else{
+      this._userId = "";
+      this.sortStoryOnBoard(this.activeSprintStories);
+    }
   }
   protected stories!: Story[];
   private boardId!: string;
   protected activeSprint!: Sprint;
   protected boardSprints!: Sprint[];
   protected activeSprintStories!: Story[];
+  protected userSprintStories!: Story[];
   private _userId!: string;
   protected boardColumns: any = [
     {
@@ -61,6 +68,34 @@ export class StoryBoardComponent implements OnInit {
     });
   }
 
+  sortStoryOnBoard(stories: Story[]){
+    stories.forEach((e) => {
+      this.boardColumns.forEach((i: any) => {
+        if (
+          e.status.status.toLocaleLowerCase() === 'todo' &&
+          i.title === 'To Do'
+        ) {
+          i.stories.push(e);
+        } else if (
+          e.status.status.toLocaleLowerCase() === 'inprogress' &&
+          i.title === 'In Progress'
+        ) {
+          i.stories.push(e);
+        } else if (
+          e.status.status.toLocaleLowerCase() === 'validation' &&
+          i.title === 'Validation'
+        ) {
+          i.stories.push(e);
+        } else if (
+          e.status.status.toLocaleLowerCase() === 'done' &&
+          i.title === 'Done'
+        ) {
+          i.stories.push(e);
+        }
+      });
+    });
+  }
+
   getStoryOnBoard(boardId: string) {
     this.storyService.getStoriesOnBoard(boardId).subscribe({
       next: (res) => {
@@ -68,31 +103,10 @@ export class StoryBoardComponent implements OnInit {
         this.activeSprintStories = this.stories.filter(
           (i) => this.activeSprint.id === i.sprintId,
         );
-        this.activeSprintStories.forEach((e) => {
-          this.boardColumns.forEach((i: any) => {
-            if (
-              e.status.status.toLocaleLowerCase() === 'todo' &&
-              i.title === 'To Do'
-            ) {
-              i.stories.push(e);
-            } else if (
-              e.status.status.toLocaleLowerCase() === 'inprogress' &&
-              i.title === 'In Progress'
-            ) {
-              i.stories.push(e);
-            } else if (
-              e.status.status.toLocaleLowerCase() === 'validation' &&
-              i.title === 'Validation'
-            ) {
-              i.stories.push(e);
-            } else if (
-              e.status.status.toLocaleLowerCase() === 'done' &&
-              i.title === 'Done'
-            ) {
-              i.stories.push(e);
-            }
-          });
-        });
+        this.userSprintStories = this.stories.filter(
+          (i) => this._userId === i.reporter.id,
+        );
+        this.sortStoryOnBoard(this.activeSprintStories);
       },
       error: (err) => {
         this.snackbarService.openErrorSnackbar(err.error, 'X');

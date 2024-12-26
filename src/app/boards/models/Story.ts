@@ -1,4 +1,4 @@
-import { User } from 'src/app/shared/models/User';
+import { User } from "./ProjectBoard";
 
 export interface Stories {
   stories: Story[];
