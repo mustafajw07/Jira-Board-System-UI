@@ -108,7 +108,9 @@ export class StoryBoardComponent implements OnInit {
       error: (err) => {
         this.snackbarService.openErrorSnackbar(err.error, 'X');
       },
-      complete: () => {this.loading = false}
+      complete: () => {
+        this.loading = false;
+      },
     });
   }
 
@@ -122,7 +124,9 @@ export class StoryBoardComponent implements OnInit {
       error: (err) => {
         this.snackbarService.openErrorSnackbar(err.error, 'X');
       },
-      complete: () =>{this.getStoryOnBoard(this.boardId);}
+      complete: () => {
+        this.getStoryOnBoard(this.boardId);
+      },
     });
   }
 
