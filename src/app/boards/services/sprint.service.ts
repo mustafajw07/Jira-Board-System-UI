@@ -16,7 +16,7 @@ export class SprintService {
     return this.httpClient.get<BoardSprints>(`${this.API}/sprint/${boardId}`);
   }
 
-  addSprint(body: Sprint){
-    return this.httpClient.post(`${this.API}/sprint` , body);
+  addSprint(body: Sprint) {
+    return this.httpClient.post(`${this.API}/sprint`, body);
   }
 }

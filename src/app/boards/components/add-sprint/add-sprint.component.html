@@ -1,57 +1,88 @@
 <div class="p-4 bg-white rounded-lg shadow-md w-96">
-    <h2 class="text-lg font-bold mb-4">Create Sprint</h2>
-    <form [formGroup]="sprintForm" (ngSubmit)="onSubmit()">
-      <!-- Sprint No -->
-      <mat-form-field class="w-full" appearance="outline">
-        <input
-          matInput
-          formControlName="sprintNo"
-          placeholder="Enter Sprint No"
-        />
-        <mat-error *ngIf="sprintForm.get('sprintNo')?.hasError('required')">
-          Sprint no is required
-        </mat-error>
-      </mat-form-field>
-  
-      <!-- Sprint Name -->
-      <mat-form-field class="w-full mt-4" appearance="outline">
-        <input
-          matInput
-          formControlName="sprintName"
-          placeholder="Enter Sprint Name"
-        />
-        <mat-error *ngIf="sprintForm.get('sprintName')?.hasError('required')">
-            Sprint Name is required
-        </mat-error>
-      </mat-form-field>
+  <h2 class="text-lg font-bold mb-4">Create Sprint</h2>
+  <form [formGroup]="sprintForm" (ngSubmit)="onSubmit()">
+    <!-- Sprint No -->
+    <mat-form-field class="w-full" appearance="outline">
+      <input
+        matInput
+        formControlName="sprintNo"
+        placeholder="Enter Sprint No"
+      />
+      <mat-error *ngIf="sprintForm.get('sprintNo')?.hasError('required')">
+        Sprint no is required
+      </mat-error>
+    </mat-form-field>
 
-      <!-- Start Date-->
-      <mat-form-field class="w-full mt-4" appearance="outline">
-        <input matInput [matDatepicker]="startDatepicker" [min]="minDate" formControlName="startDate" placeholder="Enter start date">
-        <mat-datepicker-toggle matSuffix [for]="startDatepicker"></mat-datepicker-toggle>
-        <mat-datepicker #startDatepicker></mat-datepicker>
-        <mat-error *ngIf="sprintForm.get('startDate')?.hasError('required')">
-            Start date is required
-        </mat-error>
-      </mat-form-field>
+    <!-- Sprint Name -->
+    <mat-form-field class="w-full mt-4" appearance="outline">
+      <input
+        matInput
+        formControlName="sprintName"
+        placeholder="Enter Sprint Name"
+      />
+      <mat-error *ngIf="sprintForm.get('sprintName')?.hasError('required')">
+        Sprint Name is required
+      </mat-error>
+    </mat-form-field>
 
-      <!-- End Date-->
-      <mat-form-field class="w-full mt-4" appearance="outline">
-        <input matInput [matDatepicker]="endDatePicker" [min]="minDate" formControlName="endDate" placeholder="Enter End date">
-        <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
-        <mat-datepicker #endDatePicker></mat-datepicker>
-        <mat-error *ngIf="sprintForm.get('endDate')?.hasError('required')">
-            End date is required
-        </mat-error>
-      </mat-form-field>
-  
-      <!-- Buttons -->
-      <div class="flex justify-end gap-2 mt-6">
-        <button mat-button mat-dialog-close class="text-gray-700 !font-normal !w-20">Cancel</button>
-        <button mat-flat-button color="primary" class="!font-normal !w-20" [disabled]="sprintForm.invalid" [ngClass]="{'!text-white !bg-[#0065FF] hover:bg-[#0065FF]': !sprintForm.invalid}">
-          Create
-        </button>
-      </div>
-    </form>
-  </div>
-  
+    <!-- Start Date-->
+    <mat-form-field class="w-full mt-4" appearance="outline">
+      <input
+        matInput
+        [matDatepicker]="startDatepicker"
+        [min]="minDate"
+        formControlName="startDate"
+        placeholder="Enter start date"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="startDatepicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #startDatepicker></mat-datepicker>
+      <mat-error *ngIf="sprintForm.get('startDate')?.hasError('required')">
+        Start date is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- End Date-->
+    <mat-form-field class="w-full mt-4" appearance="outline">
+      <input
+        matInput
+        [matDatepicker]="endDatePicker"
+        [min]="minDate"
+        formControlName="endDate"
+        placeholder="Enter End date"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="endDatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #endDatePicker></mat-datepicker>
+      <mat-error *ngIf="sprintForm.get('endDate')?.hasError('required')">
+        End date is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Buttons -->
+    <div class="flex justify-end gap-2 mt-6">
+      <button
+        mat-button
+        mat-dialog-close
+        class="text-gray-700 !font-normal !w-20"
+      >
+        Cancel
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        class="!font-normal !w-20"
+        [disabled]="sprintForm.invalid"
+        [ngClass]="{
+          '!text-white !bg-[#0065FF] hover:bg-[#0065FF]': !sprintForm.invalid,
+        }"
+      >
+        Create
+      </button>
+    </div>
+  </form>
+</div>

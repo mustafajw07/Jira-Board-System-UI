@@ -10,7 +10,7 @@ import { StoryService } from '../../services/story.service';
 
 @Component({
   selector: 'app-story-board',
-  templateUrl: './story-board.component.html'
+  templateUrl: './story-board.component.html',
 })
 export class StoryBoardComponent implements OnInit {
   @Input() set userId(id: string) {

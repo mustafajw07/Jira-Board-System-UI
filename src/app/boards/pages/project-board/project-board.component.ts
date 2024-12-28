@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
+import { AddSprintComponent } from '../../components/add-sprint/add-sprint.component';
 import { ProjectBoard } from '../../models/ProjectBoard';
 import { BoardService } from '../../services/board.service';
-import { MatDialog } from '@angular/material/dialog';
-import { AddSprintComponent } from '../../components/add-sprint/add-sprint.component';
 
 @Component({
   selector: 'app-project-board',
@@ -58,9 +58,9 @@ export class ProjectBoardComponent implements OnInit {
     this.userId = e;
   }
 
-  addSprint(){
-    this.dialog.open(AddSprintComponent , {
-      data: this.boardId
+  addSprint() {
+    this.dialog.open(AddSprintComponent, {
+      data: this.boardId,
     });
   }
 }

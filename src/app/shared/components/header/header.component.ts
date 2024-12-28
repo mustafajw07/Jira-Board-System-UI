@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AddStoryComponent } from 'src/app/boards/components/add-story/add-story.component';
 import { BoardService } from 'src/app/boards/services/board.service';
 
 import { AuthService } from '../../services/auth.service';
-import { MatDialog } from '@angular/material/dialog';
-import { AddStoryComponent } from 'src/app/boards/components/add-story/add-story.component';
 
 @Component({
   selector: 'app-header',
@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate([`boards/${boardId}`]);
   }
 
-  createOptions(){
-    this.dialog.open(AddStoryComponent , {data: this.boards});
+  createOptions() {
+    this.dialog.open(AddStoryComponent, { data: this.boards });
   }
 }

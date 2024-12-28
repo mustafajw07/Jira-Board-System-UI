@@ -25,7 +25,11 @@
 
     <!-- Create visible when user is logged in -->
     <ng-container *ngIf="isLoggedIn | async">
-      <button (click)="createOptions()" mat-flat-button class="!text-white !bg-[#0065FF] hover:bg-[#0065FF] !font-normal w-24 border-r-2">
+      <button
+        (click)="createOptions()"
+        mat-flat-button
+        class="!text-white !bg-[#0065FF] hover:bg-[#0065FF] !font-normal w-24 border-r-2"
+      >
         Create
       </button>
     </ng-container>

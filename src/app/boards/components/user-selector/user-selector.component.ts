@@ -4,7 +4,7 @@ import { User } from '../../models/ProjectBoard';
 
 @Component({
   selector: 'app-user-selector',
-  templateUrl: './user-selector.component.html'
+  templateUrl: './user-selector.component.html',
 })
 export class UserSelectorComponent implements OnInit {
   @Input() set users(data: User[]) {
