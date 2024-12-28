@@ -1,6 +1,6 @@
 <header class="flex justify-between items-center px-4 py-2 shadow-md bg-white">
   <!-- Company Name -->
-  <div class="flex items-center space-x-4">
+  <div class="flex items-center space-x-10">
     <span
       (click)="home()"
       class="text-lg font-bold text-[#0052CC] hover:cursor-pointer"
@@ -20,6 +20,13 @@
       </mat-menu>
       <button mat-button [matMenuTriggerFor]="boardMenu" class="text-gray-700">
         Boards <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+    </ng-container>
+
+    <!-- Create visible when user is logged in -->
+    <ng-container *ngIf="isLoggedIn | async">
+      <button (click)="createOptions()" mat-flat-button class="!text-white !bg-[#0065FF] hover:bg-[#0065FF] !font-normal w-24 border-r-2">
+        Create
       </button>
     </ng-container>
   </div>

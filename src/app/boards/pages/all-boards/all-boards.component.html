@@ -9,11 +9,12 @@
   <ng-container *ngIf="boards.length === 0">
     <div>No boards found</div>
   </ng-container>
+  <!-- Add board Button -->
   <button
-    (click)="openAddBoardDialog()"
-    mat-raised-button
+    (click)="addBoard()"
+    mat-stroked-button
     color="primary"
-    class="float-right mt-10 !text-white !bg-[#0052CC]"
+    class="float-right mt-10 mr-2 font-normal !text-[#0052CC] transition duration-300"
   >
     Add Board
   </button>

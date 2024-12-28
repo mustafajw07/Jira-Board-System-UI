@@ -5,6 +5,8 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 import { ProjectBoard } from '../../models/ProjectBoard';
 import { BoardService } from '../../services/board.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddSprintComponent } from '../../components/add-sprint/add-sprint.component';
 
 @Component({
   selector: 'app-project-board',
@@ -23,6 +25,7 @@ export class ProjectBoardComponent implements OnInit {
   };
 
   constructor(
+    private dialog: MatDialog,
     private titleService: Title,
     private activatedRoute: ActivatedRoute,
     private snackbarService: SnackbarService,
@@ -53,5 +56,11 @@ export class ProjectBoardComponent implements OnInit {
 
   updateSelectedUser(e: string) {
     this.userId = e;
+  }
+
+  addSprint(){
+    this.dialog.open(AddSprintComponent , {
+      data: this.boardId
+    });
   }
 }

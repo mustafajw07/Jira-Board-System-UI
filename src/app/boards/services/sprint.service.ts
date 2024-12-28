@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { BoardSprints } from '../models/Sprint';
+import { BoardSprints, Sprint } from '../models/Sprint';
 
 @Injectable({
   providedIn: 'root',
@@ -14,5 +14,9 @@ export class SprintService {
 
   getSprintbyBoardId(boardId: string): Observable<BoardSprints> {
     return this.httpClient.get<BoardSprints>(`${this.API}/sprint/${boardId}`);
+  }
+
+  addSprint(body: Sprint){
+    return this.httpClient.post(`${this.API}/sprint` , body);
   }
 }

@@ -1,15 +1,24 @@
 <app-loader *ngIf="loading"></app-loader>
 <app-side-bar></app-side-bar>
-<div class="ml-24 mt-10">
-  <div>
+<div class="ml-24 mt-10 flex flex-col justify-between">
+  <div class="flex-1">
     <h2>{{ projectBoard.boardName }}</h2>
-  </div>
-  <div>
     <app-user-selector
       *ngIf="projectBoard.users.length > 0"
       [users]="projectBoard.users"
       (selectedUser)="updateSelectedUser($event)"
     ></app-user-selector>
+  </div>
+  <div class="flex space-x-4 ml-auto mr-10">
+    <!-- Add Sprint Button -->
+    <button
+      mat-stroked-button
+      color="primary"
+      class="w-36 mt-3 py-3 font-normal !text-[#0052CC] transition duration-300"
+      (click)="addSprint()"
+    >
+      Create Sprint
+    </button>
   </div>
 </div>
 <app-story-board [userId]="userId"></app-story-board>

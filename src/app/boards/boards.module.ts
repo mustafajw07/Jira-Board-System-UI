@@ -11,6 +11,8 @@ import { StoryBoardComponent } from './components/story-board/story-board.compon
 import { UserSelectorComponent } from './components/user-selector/user-selector.component';
 import { AllBoardsComponent } from './pages/all-boards/all-boards.component';
 import { ProjectBoardComponent } from './pages/project-board/project-board.component';
+import { AddSprintComponent } from './components/add-sprint/add-sprint.component';
+import { AddStoryComponent } from './components/add-story/add-story.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { ProjectBoardComponent } from './pages/project-board/project-board.compo
     SideBarComponent,
     UserSelectorComponent,
     StoryBoardComponent,
+    AddSprintComponent,
+    AddStoryComponent,
   ],
   imports: [CommonModule, SharedModule, BoardsRoutingModule],
 })

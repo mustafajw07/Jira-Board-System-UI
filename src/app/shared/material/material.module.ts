@@ -13,6 +13,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 const MATERIAl = [
@@ -31,6 +33,8 @@ const MATERIAl = [
   MatCardModule,
   MatTabsModule,
   DragDropModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 ];
 
 @NgModule({

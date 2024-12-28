@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { BoardService } from 'src/app/boards/services/board.service';
 
 import { AuthService } from '../../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddStoryComponent } from 'src/app/boards/components/add-story/add-story.component';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +14,7 @@ export class HeaderComponent implements OnInit {
   protected isLoggedIn = this.authService.isUserLogin;
   protected boards: any = [];
   constructor(
+    private dialog: MatDialog,
     private router: Router,
     private authService: AuthService,
     private boardService: BoardService,
@@ -46,5 +49,9 @@ export class HeaderComponent implements OnInit {
 
   openBoard(boardId: string) {
     this.router.navigate([`boards/${boardId}`]);
+  }
+
+  createOptions(){
+    this.dialog.open(AddStoryComponent , {data: this.boards});
   }
 }

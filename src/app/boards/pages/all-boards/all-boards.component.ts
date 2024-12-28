@@ -43,7 +43,7 @@ export class AllBoardsComponent implements OnInit {
     });
   }
 
-  openAddBoardDialog() {
+  addBoard() {
     const dialog = this.dialog.open(AddBoardComponent);
     dialog.afterClosed().subscribe(() => {
       this.getAllBoards();

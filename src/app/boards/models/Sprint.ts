@@ -8,5 +8,5 @@ export interface Sprint {
   startDate: string;
   endDate: string;
   boardId: string;
-  id: string;
+  id?: string;
 }

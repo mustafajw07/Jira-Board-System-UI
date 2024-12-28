@@ -51,8 +51,8 @@
 
     <!-- Buttons -->
     <div class="flex justify-end gap-2 mt-6">
-      <button mat-button mat-dialog-close class="text-gray-700">Cancel</button>
-      <button mat-raised-button color="primary" [disabled]="boardForm.invalid">
+      <button mat-button mat-dialog-close class="text-gray-700 !font-normal !w-20">Cancel</button>
+      <button mat-flat-button color="primary" class="!font-normal !w-20" [disabled]="boardForm.invalid" [ngClass]="{'!text-white !bg-[#0065FF] hover:bg-[#0065FF]': !boardForm.invalid}">
         Create
       </button>
     </div>
