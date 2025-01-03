@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Stories } from '../models/Story';
+import { Priorities } from '../models/Priority';
+import { Epics } from '../models/Epic';
 
 @Injectable({
   providedIn: 'root',
@@ -15,4 +17,12 @@ export class StoryService {
   getStoriesOnBoard(boardId: string): Observable<Stories> {
     return this.httpClient.get<Stories>(`${this.API}/board/story/${boardId}`);
   }
+
+  getPriorities(): Observable<Priorities>{
+    return this.httpClient.get<Priorities>(`${this.API}/story-priority`);
+  }
+
+getEpics(boardId: string): Observable<Epics>{
+  return this.httpClient.get<Epics>(`${this.API}/epic/${boardId}`);
+}
 }
