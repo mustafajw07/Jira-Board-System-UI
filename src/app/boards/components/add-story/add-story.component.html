@@ -1,86 +1,143 @@
 <div class="max-w-lg mx-auto p-4 bg-white shadow-md rounded-md">
-    
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
-        <div class="flex items-center custom-mat-select">
-            <label class="w-32 text-right mr-4" for="project">Project</label>
-            <mat-form-field>
-                <mat-select class="!text-sm" formControlName="project" id="project" placeholder="Select Project">
-                    <mat-option *ngFor="let project of projects" [value]="project.id">{{ project.boardName }}</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        
-        <div class="flex items-center">
-          <label class="w-32 text-right mr-4" for="sprint">Sprint</label>
-          <mat-form-field class="w-full">
-            <mat-select formControlName="sprint" id="sprint" placeholder="Select Sprint">
-              <mat-option *ngFor="let sprint of sprints" [value]="sprint.id">{{ sprint.sprintName }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        
-      <div class="flex items-center">
-        <label class="w-32 text-right mr-4" for="issueType">Issue Type</label>
-        <mat-form-field class="w-full">
-          <mat-select formControlName="issueType" id="issueType" placeholder="Select Issue Type">
-            <mat-option *ngFor="let type of issueTypes" [value]="type">{{ type }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-  
-      <div class="flex items-center">
-        <label class="w-32 text-right mr-4" for="summary">Summary</label>
-        <mat-form-field class="w-full">
-          <input matInput formControlName="summary" id="summary" placeholder="Enter Summary" />
-        </mat-form-field>
-      </div>
-  
-      <div class="flex items-center">
-        <label class="w-32 text-right mr-4" for="reporter">Reporter</label>
-        <mat-form-field class="w-full">
-          <mat-select formControlName="reporter" id="reporter" placeholder="Select Reporter">
-            <mat-option *ngFor="let reporter of reporters" [value]="reporter.id">{{ reporter.userName }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-  
-      <div class="flex items-center">
-        <label class="w-32 text-right mr-4" for="description">Description</label>
-        <mat-form-field class="w-full">
-          <textarea matInput formControlName="description" id="description" placeholder="Enter Description"></textarea>
-        </mat-form-field>
-      </div>
-  
-      <div class="flex items-center">
-        <label class="w-32 text-right mr-4" for="priority">Priority</label>
-        <mat-form-field class="w-full">
-          <mat-select formControlName="priority" id="priority" placeholder="Select Priority">
-            <mat-option *ngFor="let priority of priorities" [value]="priority.id">{{ priority.priority }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-  
-      <div class="flex items-center">
-        <label class="w-32 text-right mr-4" for="assignee">Assignee</label>
-        <mat-form-field class="w-full">
-          <mat-select formControlName="assignee" id="assignee" placeholder="Select Assignee">
-            <mat-option *ngFor="let assignee of assignees" [value]="assignee.id">{{ assignee.userName }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-  
-      <div class="flex items-center">
-        <label class="w-32 text-right mr-4" for="epicLink">Epic Link</label>
-        <mat-form-field class="w-full">
-          <mat-select formControlName="epicLink" id="epicLink" placeholder="Select Epic Link">
-            <mat-option *ngFor="let epic of epics" [value]="epic.epicId">{{ epic.epicName }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-  
-      <div class="text-center">
-        <button mat-raised-button color="primary" type="submit">Submit</button>
-      </div>
-    </form>
-  </div>
-  
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div class="flex items-center custom-mat-select">
+      <label class="w-32 text-right mr-4" for="project">Project</label>
+      <mat-form-field>
+        <mat-select
+          class="!text-sm"
+          formControlName="project"
+          id="project"
+          placeholder="Select Project"
+        >
+          <mat-option *ngFor="let project of projects" [value]="project.id">{{
+            project.boardName
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="flex items-center">
+      <label class="w-32 text-right mr-4" for="sprint">Sprint</label>
+      <mat-form-field class="w-full">
+        <mat-select
+          formControlName="sprint"
+          id="sprint"
+          placeholder="Select Sprint"
+        >
+          <mat-option *ngFor="let sprint of sprints" [value]="sprint.id">{{
+            sprint.sprintName
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="flex items-center">
+      <label class="w-32 text-right mr-4" for="issueType">Issue Type</label>
+      <mat-form-field class="w-full">
+        <mat-select
+          formControlName="issueType"
+          id="issueType"
+          placeholder="Select Issue Type"
+        >
+          <mat-option *ngFor="let type of issueTypes" [value]="type">{{
+            type
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="flex items-center">
+      <label class="w-32 text-right mr-4" for="summary">Summary</label>
+      <mat-form-field class="w-full">
+        <input
+          matInput
+          formControlName="summary"
+          id="summary"
+          placeholder="Enter Summary"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="flex items-center">
+      <label class="w-32 text-right mr-4" for="reporter">Reporter</label>
+      <mat-form-field class="w-full">
+        <mat-select
+          formControlName="reporter"
+          id="reporter"
+          placeholder="Select Reporter"
+        >
+          <mat-option
+            *ngFor="let reporter of reporters"
+            [value]="reporter.id"
+            >{{ reporter.userName }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="flex items-center">
+      <label class="w-32 text-right mr-4" for="description">Description</label>
+      <mat-form-field class="w-full">
+        <textarea
+          matInput
+          formControlName="description"
+          id="description"
+          placeholder="Enter Description"
+        ></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="flex items-center">
+      <label class="w-32 text-right mr-4" for="priority">Priority</label>
+      <mat-form-field class="w-full">
+        <mat-select
+          formControlName="priority"
+          id="priority"
+          placeholder="Select Priority"
+        >
+          <mat-option
+            *ngFor="let priority of priorities"
+            [value]="priority.id"
+            >{{ priority.priority }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="flex items-center">
+      <label class="w-32 text-right mr-4" for="assignee">Assignee</label>
+      <mat-form-field class="w-full">
+        <mat-select
+          formControlName="assignee"
+          id="assignee"
+          placeholder="Select Assignee"
+        >
+          <mat-option
+            *ngFor="let assignee of assignees"
+            [value]="assignee.id"
+            >{{ assignee.userName }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="flex items-center">
+      <label class="w-32 text-right mr-4" for="epicLink">Epic Link</label>
+      <mat-form-field class="w-full">
+        <mat-select
+          formControlName="epicLink"
+          id="epicLink"
+          placeholder="Select Epic Link"
+        >
+          <mat-option *ngFor="let epic of epics" [value]="epic.epicId">{{
+            epic.epicName
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="text-center">
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </div>
+  </form>
+</div>

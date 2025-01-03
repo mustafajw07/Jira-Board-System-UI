@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Stories } from '../models/Story';
-import { Priorities } from '../models/Priority';
 import { Epics } from '../models/Epic';
+import { Priorities } from '../models/Priority';
+import { Stories } from '../models/Story';
 
 @Injectable({
   providedIn: 'root',
@@ -18,11 +18,11 @@ export class StoryService {
     return this.httpClient.get<Stories>(`${this.API}/board/story/${boardId}`);
   }
 
-  getPriorities(): Observable<Priorities>{
+  getPriorities(): Observable<Priorities> {
     return this.httpClient.get<Priorities>(`${this.API}/story-priority`);
   }
 
-getEpics(boardId: string): Observable<Epics>{
-  return this.httpClient.get<Epics>(`${this.API}/epic/${boardId}`);
-}
+  getEpics(boardId: string): Observable<Epics> {
+    return this.httpClient.get<Epics>(`${this.API}/epic/${boardId}`);
+  }
 }
