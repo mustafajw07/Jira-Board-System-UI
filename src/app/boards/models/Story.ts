@@ -20,7 +20,7 @@ export interface Story {
   status: Status;
 }
 
-export interface StoryReqBody{
+export interface StoryReqBody {
   title: string;
   description: string;
   sprintId?: string;

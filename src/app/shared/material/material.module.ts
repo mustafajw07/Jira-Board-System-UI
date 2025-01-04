@@ -2,6 +2,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -16,7 +17,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
-import {MatCheckboxModule} from '@angular/material/checkbox';
 
 const MATERIAl = [
   MatButtonModule,
@@ -36,7 +36,7 @@ const MATERIAl = [
   DragDropModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatCheckboxModule
+  MatCheckboxModule,
 ];
 
 @NgModule({

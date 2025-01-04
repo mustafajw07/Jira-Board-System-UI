@@ -1,4 +1,4 @@
-export interface StoryType{
-    id: string,
-    type: string
+export interface StoryType {
+  id: string;
+  type: string;
 }

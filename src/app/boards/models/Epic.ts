@@ -3,4 +3,3 @@ export interface Epic {
   title: string;
   description: string;
 }
-

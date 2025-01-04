@@ -9,9 +9,9 @@ import { Board } from '../../models/Board';
 import { Epic } from '../../models/Epic';
 import { Priority } from '../../models/Priority';
 import { Sprint } from '../../models/Sprint';
+import { StoryType } from '../../models/StoryTypes';
 import { SprintService } from '../../services/sprint.service';
 import { StoryService } from '../../services/story.service';
-import { StoryType } from '../../models/StoryTypes';
 
 @Component({
   selector: 'app-add-story',
@@ -26,8 +26,8 @@ export class AddStoryComponent implements OnInit {
   protected reporters: ProfileData[] = [];
   protected assignees: ProfileData[] = [];
   protected epics: Epic[] = [];
-  protected issueTypes = ['Epic', 'Story' , 'Bug'];
-  protected stroyTypes:StoryType[] = [];
+  protected issueTypes = ['Epic', 'Story', 'Bug'];
+  protected stroyTypes: StoryType[] = [];
   protected isEpic = false;
 
   constructor(
@@ -43,14 +43,14 @@ export class AddStoryComponent implements OnInit {
       project: ['', Validators.required],
       issueType: ['Story', Validators.required],
       title: ['', Validators.required],
-      description: ['' , Validators.required],
+      description: ['', Validators.required],
       flag: [false],
       storyPoint: [''],
       sprint: [''],
       reporter: [''],
       priority: [''],
       assignee: [''],
-      epic: ['']
+      epic: [''],
     });
     this.boardId = boards[0].id;
   }
@@ -75,7 +75,7 @@ export class AddStoryComponent implements OnInit {
     });
   }
 
-  getStoryTypes(){
+  getStoryTypes() {
     this.storyService.getStoryTypes().subscribe({
       next: (res) => {
         this.stroyTypes = res;
@@ -120,14 +120,14 @@ export class AddStoryComponent implements OnInit {
     });
   }
 
-  checkStoryType(event: any){
-    this.isEpic = event.value === "Epic" ? true : false;
+  checkStoryType(event: any) {
+    this.isEpic = event.value === 'Epic' ? true : false;
   }
 
-  updateBoardId(event: any){
+  updateBoardId(event: any) {
     this.boardId = event.value;
     this.getSprintsByBoardId(this.boardId || '');
-    this.form.controls['sprint'].setValue('')
+    this.form.controls['sprint'].setValue('');
   }
 
   cancel() {
@@ -135,46 +135,51 @@ export class AddStoryComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.isEpic){
-      let payload = {
-        title : this.form.value.title,
+    if (this.isEpic) {
+      const payload = {
+        title: this.form.value.title,
         description: this.form.value.description,
-        priority : this.form.value.priority && this.form.value.priority,
-        reporter : this.form.value.priority && this.form.value.priority
+        priority: this.form.value.priority && this.form.value.priority,
+        reporter: this.form.value.priority && this.form.value.priority,
       };
-      this.storyService.addEpic(payload , this.boardId || '').subscribe({
+      this.storyService.addEpic(payload, this.boardId || '').subscribe({
         next: (res) => {
           this.snackbarService.openSuccessSnackbar(res, 'X');
         },
         error: (err) => {
           this.snackbarService.openErrorSnackbar(err.error, 'X');
         },
-        complete: () => {this.matDialogRef.close()}
+        complete: () => {
+          this.matDialogRef.close();
+        },
       });
-    }
-    else{
-      let type = this.stroyTypes.filter(i => i.type === this.form.value.issueType)[0].id;
-      let payload = {
-        title : this.form.value.title,
+    } else {
+      const type = this.stroyTypes.filter(
+        (i) => i.type === this.form.value.issueType,
+      )[0].id;
+      const payload = {
+        title: this.form.value.title,
         description: this.form.value.description,
         sprintId: this.form.value.sprint,
-        storyPoint : this.form.value.storyPoint && this.form.value.storyPoint, //add input
-        flag : this.form.value.flag && this.form.value.flag, // add input
-        reporter : this.form.value.reporter && this.form.value.reporter,
-        assigned : this.form.value.assignee && this.form.value.assignee,
-        epic : this.form.value.epic && this.form.value.epic,
-        priority : this.form.value.priority && this.form.value.priority,
-        type : type,
-        status : this.form.value.status && this.form.value.status
+        storyPoint: this.form.value.storyPoint && this.form.value.storyPoint, //add input
+        flag: this.form.value.flag && this.form.value.flag, // add input
+        reporter: this.form.value.reporter && this.form.value.reporter,
+        assigned: this.form.value.assignee && this.form.value.assignee,
+        epic: this.form.value.epic && this.form.value.epic,
+        priority: this.form.value.priority && this.form.value.priority,
+        type: type,
+        status: this.form.value.status && this.form.value.status,
       };
-      this.storyService.addStory(payload , this.boardId || '').subscribe({
+      this.storyService.addStory(payload, this.boardId || '').subscribe({
         next: (res) => {
           this.snackbarService.openSuccessSnackbar(res, 'X');
         },
         error: (err) => {
           this.snackbarService.openErrorSnackbar(err.error, 'X');
         },
-        complete: () => {this.matDialogRef.close()}
+        complete: () => {
+          this.matDialogRef.close();
+        },
       });
     }
   }

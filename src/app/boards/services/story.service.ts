@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { Epic } from '../models/Epic';
 import { Priorities } from '../models/Priority';
 import { Stories, StoryReqBody } from '../models/Story';
-import { Epic } from '../models/Epic';
 import { StoryType } from '../models/StoryTypes';
 
 @Injectable({
@@ -31,11 +31,11 @@ export class StoryService {
     return this.httpClient.get<StoryType[]>(`${this.API}/story-type`);
   }
 
-  addStory(body:StoryReqBody , boardId: string): Observable<string> {
-    return this.httpClient.post<string>(`${this.API}/story/${boardId}` , body);
+  addStory(body: StoryReqBody, boardId: string): Observable<string> {
+    return this.httpClient.post<string>(`${this.API}/story/${boardId}`, body);
   }
 
-  addEpic(body:Epic , boardId: string): Observable<string> {
-    return this.httpClient.post<string>(`${this.API}/epic/${boardId}` , body);
+  addEpic(body: Epic, boardId: string): Observable<string> {
+    return this.httpClient.post<string>(`${this.API}/epic/${boardId}`, body);
   }
 }
