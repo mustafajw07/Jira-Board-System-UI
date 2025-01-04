@@ -16,6 +16,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 const MATERIAl = [
   MatButtonModule,
@@ -35,6 +36,7 @@ const MATERIAl = [
   DragDropModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatCheckboxModule
 ];
 
 @NgModule({

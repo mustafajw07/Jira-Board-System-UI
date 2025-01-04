@@ -1,13 +1,13 @@
-<div class="max-w-lg mx-auto p-4 bg-white shadow-md rounded-md">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
-    <div class="flex items-center custom-mat-select">
+<div class="max-w-lg mx-auto p-3 bg-white shadow-md rounded-md overflow-y-scroll scroll h-[550px] w-[750px]">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-1">
+    <div class="flex items-center">
       <label class="w-32 text-right mr-4" for="project">Project</label>
-      <mat-form-field>
+      <mat-form-field class="w-full">
         <mat-select
-          class="!text-sm"
           formControlName="project"
           id="project"
           placeholder="Select Project"
+          (selectionChange)="updateBoardId($event)"
         >
           <mat-option *ngFor="let project of projects" [value]="project.id">{{
             project.boardName
@@ -16,7 +16,7 @@
       </mat-form-field>
     </div>
 
-    <div class="flex items-center">
+    <div *ngIf="!isEpic" class="flex items-center">
       <label class="w-32 text-right mr-4" for="sprint">Sprint</label>
       <mat-form-field class="w-full">
         <mat-select
@@ -30,7 +30,6 @@
         </mat-select>
       </mat-form-field>
     </div>
-
     <div class="flex items-center">
       <label class="w-32 text-right mr-4" for="issueType">Issue Type</label>
       <mat-form-field class="w-full">
@@ -38,6 +37,7 @@
           formControlName="issueType"
           id="issueType"
           placeholder="Select Issue Type"
+          (selectionChange)="checkStoryType($event)"
         >
           <mat-option *ngFor="let type of issueTypes" [value]="type">{{
             type
@@ -47,13 +47,25 @@
     </div>
 
     <div class="flex items-center">
-      <label class="w-32 text-right mr-4" for="summary">Summary</label>
+      <label class="w-32 text-right mr-4" for="title">Title</label>
       <mat-form-field class="w-full">
         <input
           matInput
-          formControlName="summary"
-          id="summary"
-          placeholder="Enter Summary"
+          formControlName="title"
+          id="title"
+          placeholder="Enter title"
+        />
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="!isEpic" class="flex items-center">
+      <label class="w-32 text-right mr-4" for="storyPoint">Story Point</label>
+      <mat-form-field class="w-full">
+        <input
+          matInput
+          formControlName="storyPoint"
+          id="storyPoint"
+          placeholder="Enter Story Point"
         />
       </mat-form-field>
     </div>
@@ -104,7 +116,7 @@
       </mat-form-field>
     </div>
 
-    <div class="flex items-center">
+    <div *ngIf="!isEpic" class="flex items-center">
       <label class="w-32 text-right mr-4" for="assignee">Assignee</label>
       <mat-form-field class="w-full">
         <mat-select
@@ -121,23 +133,41 @@
       </mat-form-field>
     </div>
 
-    <div class="flex items-center">
-      <label class="w-32 text-right mr-4" for="epicLink">Epic Link</label>
+    <div *ngIf="!isEpic" class="flex items-center">
+      <label class="w-32 text-right mr-4" for="epic">Epic</label>
       <mat-form-field class="w-full">
         <mat-select
-          formControlName="epicLink"
-          id="epicLink"
+          formControlName="epic"
+          id="epic"
           placeholder="Select Epic Link"
         >
-          <mat-option *ngFor="let epic of epics" [value]="epic.epicId">{{
-            epic.epicName
+          <mat-option *ngFor="let epic of epics" [value]="epic.id">{{
+            epic.title
           }}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
 
-    <div class="text-center">
-      <button mat-raised-button color="primary" type="submit">Submit</button>
+    <!-- Buttons -->
+    <div class="flex justify-end gap-2 mt-6">
+      <button
+        mat-button
+        mat-dialog-close
+        class="text-gray-700 !font-normal !w-20"
+      >
+        Cancel
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        class="!font-normal !w-20"
+        [disabled]="form.invalid"
+        [ngClass]="{
+          '!text-white !bg-[#0065FF] hover:bg-[#0065FF]': !form.invalid,
+        }"
+      >
+        Create
+      </button>
     </div>
   </form>
 </div>

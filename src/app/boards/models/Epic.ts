@@ -1,9 +1,6 @@
-export interface Epics {
-  epics: Epic[];
-}
-
 export interface Epic {
-  epicId: string;
-  epicName: string;
+  id?: string;
+  title: string;
   description: string;
 }
+

@@ -9,17 +9,28 @@ export interface Story {
   id: string;
   title: string;
   description: string;
-  flag: boolean;
   storyPoint: number | null;
   boardId: string;
   reporter: User;
-  teamMember: string;
   assigned: User;
   sprint: Sprint;
   epic: string;
   priority: Priority;
   type: Type;
   status: Status;
+}
+
+export interface StoryReqBody{
+  title: string;
+  description: string;
+  sprintId?: string;
+  storyPoint?: number | null;
+  reporter: string;
+  assigned?: string;
+  epic?: string;
+  priority?: string;
+  type?: string;
+  status?: string;
 }
 
 interface Priority {

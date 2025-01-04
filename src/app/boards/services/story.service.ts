@@ -2,9 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Epics } from '../models/Epic';
 import { Priorities } from '../models/Priority';
-import { Stories } from '../models/Story';
+import { Stories, StoryReqBody } from '../models/Story';
+import { Epic } from '../models/Epic';
+import { StoryType } from '../models/StoryTypes';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,19 @@ export class StoryService {
     return this.httpClient.get<Priorities>(`${this.API}/story-priority`);
   }
 
-  getEpics(boardId: string): Observable<Epics> {
-    return this.httpClient.get<Epics>(`${this.API}/epic/${boardId}`);
+  getEpics(boardId: string): Observable<Epic[]> {
+    return this.httpClient.get<Epic[]>(`${this.API}/epic/${boardId}`);
+  }
+
+  getStoryTypes(): Observable<StoryType[]> {
+    return this.httpClient.get<StoryType[]>(`${this.API}/story-type`);
+  }
+
+  addStory(body:StoryReqBody , boardId: string): Observable<string> {
+    return this.httpClient.post<string>(`${this.API}/story/${boardId}` , body);
+  }
+
+  addEpic(body:Epic , boardId: string): Observable<string> {
+    return this.httpClient.post<string>(`${this.API}/epic/${boardId}` , body);
   }
 }
