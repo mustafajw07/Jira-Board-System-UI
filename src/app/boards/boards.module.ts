@@ -13,6 +13,8 @@ import { StoryBoardComponent } from './components/story-board/story-board.compon
 import { UserSelectorComponent } from './components/user-selector/user-selector.component';
 import { AllBoardsComponent } from './pages/all-boards/all-boards.component';
 import { ProjectBoardComponent } from './pages/project-board/project-board.component';
+import { StoryCardComponent } from './components/story-card/story-card.component';
+import { PriorityIconComponent } from './components/priority-icon/priority-icon.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { ProjectBoardComponent } from './pages/project-board/project-board.compo
     StoryBoardComponent,
     AddSprintComponent,
     AddStoryComponent,
+    StoryCardComponent,
+    PriorityIconComponent,
   ],
   imports: [CommonModule, SharedModule, BoardsRoutingModule],
 })

@@ -34,16 +34,16 @@ export interface StoryReqBody {
 }
 
 interface Priority {
-  priority: string;
   id: string;
+  priority: string;
 }
 
 interface Type {
-  type: string;
   id: string;
+  type: string;
 }
 
 interface Status {
-  name: string;
   id: string;
+  name: string;
 }

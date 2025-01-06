@@ -95,9 +95,13 @@ export class StoryBoardComponent implements OnInit {
     this.storyService.getStoriesOnBoard(boardId).subscribe({
       next: (res) => {
         this.stories = res.stories;
-        this.activeSprintStories = this.stories.filter(
-          (i) => this.activeSprint.id === i.sprint.id,
-        );
+        this.activeSprintStories = this.stories.filter((i) => {
+          if(i.sprint){
+            return i.sprint.id
+          }else{
+            return ""
+          }
+        });
         this.userSprintStories = this.stories.filter(
           (i) => this._userId === i.reporter.id,
         );
