@@ -1,25 +1,54 @@
 <div [ngClass]="priorityClass" class="flex items-center justify-center w-6 h-6">
-    <svg *ngIf="priority === 'lowest'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
-      <path d="M10 18L4 12h12L10 18z" />
-    </svg>
-  
-    <svg *ngIf="priority === 'low'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
-      <path d="M10 18L4 12h12L10 18z" />
-      <path d="M10 15L4 9h12L10 15z" />
-    </svg>
-  
-    <svg *ngIf="priority === 'medium'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
-      <rect x="4" y="9" width="12" height="2" />
-      <rect x="4" y="13" width="12" height="2" />
-    </svg>
-  
-    <svg *ngIf="priority === 'high'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
-      <path d="M10 2L4 8h12L10 2z" />
-    </svg>
-  
-    <svg *ngIf="priority === 'highest'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
-      <path d="M10 2L4 8h12L10 2z" />
-      <path d="M10 5L4 11h12L10 5z" />
-    </svg>
-  </div>
-  
+  <svg
+    *ngIf="priority === 'lowest'"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    class="w-6 h-6"
+  >
+    <path d="M10 18L4 12h12L10 18z" />
+  </svg>
+
+  <svg
+    *ngIf="priority === 'low'"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    class="w-6 h-6"
+  >
+    <path d="M10 18L4 12h12L10 18z" />
+    <path d="M10 15L4 9h12L10 15z" />
+  </svg>
+
+  <svg
+    *ngIf="priority === 'medium'"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    class="w-6 h-6"
+  >
+    <rect x="4" y="9" width="12" height="2" />
+    <rect x="4" y="13" width="12" height="2" />
+  </svg>
+
+  <svg
+    *ngIf="priority === 'high'"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    class="w-6 h-6"
+  >
+    <path d="M10 2L4 8h12L10 2z" />
+  </svg>
+
+  <svg
+    *ngIf="priority === 'highest'"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    class="w-6 h-6"
+  >
+    <path d="M10 2L4 8h12L10 2z" />
+    <path d="M10 5L4 11h12L10 5z" />
+  </svg>
+</div>

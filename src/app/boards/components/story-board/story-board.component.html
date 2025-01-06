@@ -9,6 +9,12 @@
     (cdkDropListDropped)="onDrop($event)"
   >
     <h2 class="text-lg font-semibold mb-4">{{ column.title }}</h2>
-    <app-story-card class="hover:cursor-move m-1" cdkDrag *ngFor="let task of column.stories" [ticket]="task" [ngClass]="{ 'line-through text-gray-500': column.title === 'Done' }"></app-story-card>
+    <app-story-card
+      class="hover:cursor-move m-1"
+      cdkDrag
+      *ngFor="let task of column.stories"
+      [ticket]="task"
+      [ngClass]="{ 'line-through text-gray-500': column.title === 'Done' }"
+    ></app-story-card>
   </div>
 </div>

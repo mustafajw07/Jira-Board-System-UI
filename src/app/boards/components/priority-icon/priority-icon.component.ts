@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-priority-icon',
-  templateUrl: './priority-icon.component.html'
+  templateUrl: './priority-icon.component.html',
 })
 export class PriorityIconComponent {
   @Input() priority!: string;

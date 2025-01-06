@@ -96,10 +96,10 @@ export class StoryBoardComponent implements OnInit {
       next: (res) => {
         this.stories = res.stories;
         this.activeSprintStories = this.stories.filter((i) => {
-          if(i.sprint){
-            return i.sprint.id
-          }else{
-            return ""
+          if (i.sprint) {
+            return i.sprint.id;
+          } else {
+            return '';
           }
         });
         this.userSprintStories = this.stories.filter(
