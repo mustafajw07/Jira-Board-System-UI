@@ -29,6 +29,10 @@ export class AddSprintComponent {
     });
   }
 
+  cancel() {
+    this.matDialogRef.close(false);
+  }
+
   onSubmit() {
     this.sprintService.addSprint(this.sprintForm.value).subscribe({
       next: () => {
@@ -36,12 +40,13 @@ export class AddSprintComponent {
           'Sprint added successfully',
           'X',
         );
+        this.matDialogRef.close(true);
       },
       error: (err) => {
         this.snackbarService.openErrorSnackbar(err.message, 'X');
       },
       complete: () => {
-        this.matDialogRef.close();
+        this.matDialogRef.close(false);
       },
     });
   }

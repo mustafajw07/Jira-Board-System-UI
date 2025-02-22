@@ -1,12 +1,14 @@
 <app-loader *ngIf="loading"></app-loader>
+<h1 *ngIf="noActiveSprint" class="!ml-20">No Active Sprint</h1>
 <div class="flex gap-4 p-4">
   <div
-    *ngFor="let column of boardColumns"
+    *ngFor="let column of boardColumns; let i = index"
     cdkDropList
     [cdkDropListData]="column.stories"
     [cdkDropListConnectedTo]="connectedLists"
+    [id]="'cdk-drop-list-' + i"
     class="w-1/4 bg-gray-100 rounded p-4 shadow-md"
-    (cdkDropListDropped)="onDrop($event)"
+    (cdkDropListDropped)="onDrop($event , column)"
   >
     <h2 class="text-lg font-semibold mb-4">{{ column.title }}</h2>
     <app-story-card

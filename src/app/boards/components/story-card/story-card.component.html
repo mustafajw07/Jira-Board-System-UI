@@ -10,7 +10,7 @@
     <div class="hover:cursor-pointer">
       <mat-menu #storyOptions="matMenu">
         <button (click)="editStory()" mat-menu-item>Edit</button>
-        <button (click)="deleteStory()" mat-menu-item>Delete</button>
+        <button (click)="openDeleteDialog()" mat-menu-item>Delete</button>
       </mat-menu>
       <mat-icon [matMenuTriggerFor]="storyOptions">more_vert</mat-icon>
     </div>

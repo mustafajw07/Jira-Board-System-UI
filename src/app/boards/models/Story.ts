@@ -21,8 +21,8 @@ export interface Story {
 }
 
 export interface StoryReqBody {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   sprintId?: string;
   storyPoint?: number | null;
   reporter: string;
@@ -43,7 +43,7 @@ interface Type {
   type: string;
 }
 
-interface Status {
+export interface Status {
   id: string;
   name: string;
 }

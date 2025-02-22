@@ -16,6 +16,12 @@ export class SprintService {
     return this.httpClient.get<BoardSprints>(`${this.API}/sprint/${boardId}`);
   }
 
+  getActiveSprintbyBoardId(boardId: string): Observable<BoardSprints> {
+    return this.httpClient.get<BoardSprints>(
+      `${this.API}/sprint/active/${boardId}`,
+    );
+  }
+
   addSprint(body: Sprint) {
     return this.httpClient.post(`${this.API}/sprint`, body);
   }

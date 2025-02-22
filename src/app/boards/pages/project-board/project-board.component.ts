@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 import { AddSprintComponent } from '../../components/add-sprint/add-sprint.component';
@@ -23,6 +24,7 @@ export class ProjectBoardComponent implements OnInit {
     description: '',
     users: [],
   };
+  newSprint: Subject<void> = new Subject<void>();
 
   constructor(
     private dialog: MatDialog,
@@ -59,8 +61,13 @@ export class ProjectBoardComponent implements OnInit {
   }
 
   addSprint() {
-    this.dialog.open(AddSprintComponent, {
+    const dialog = this.dialog.open(AddSprintComponent, {
       data: this.boardId,
+    });
+    dialog.afterClosed().subscribe((res) => {
+      if (res) {
+        this.newSprint.next();
+      }
     });
   }
 }

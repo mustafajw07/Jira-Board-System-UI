@@ -168,7 +168,6 @@ export class AddStoryComponent implements OnInit {
         epic: this.form.value.epic && this.form.value.epic,
         priority: this.form.value.priority && this.form.value.priority,
         type: type,
-        status: this.form.value.status && this.form.value.status,
       };
       this.storyService.addStory(payload, this.boardId || '').subscribe({
         next: (res) => {
